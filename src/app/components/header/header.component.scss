@@ -1,0 +1,55 @@
+@import '../../../scss/custom'; 
+
+.top-bar {
+  margin: 20px 0;
+  .logo {
+    width: 100%;
+    height: 100%;
+  }
+  li {
+    padding: 1.5rem;
+    font-weight: 500;
+  }
+  a {
+    color: $gray-900;
+  }
+  a.active {
+    color: $primary;
+  }
+  .navbar-light .navbar-nav .show > .nav-link,
+  .navbar-light .navbar-nav .nav-link.active {
+    color: $primary;
+  }
+}
+.dropdown-menu-end li {
+  padding: 0 10px;
+  border-radius: 5px;
+
+  a {
+    color: $primary;
+  }
+  a:hover {
+    color: $white;
+    background-color: $primary;
+    border-radius: 5px;
+  }
+}
+
+.nav-pills .nav-link {
+  background-color: $lightpink;
+  border-radius: 8px;
+  color: $darkpink;
+}
+
+.avatar-container {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+}
+
+.avatar-container img {
+  margin: -1px;
+}

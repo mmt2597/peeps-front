@@ -1,0 +1,222 @@
+@import 'scss/custom';
+@import "~ngx-smart-modal/ngx-smart-modal";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap");
+
+body {
+  font-family: "Heebo", sans-serif;
+  font-size: 0.875rem;
+}
+
+a {
+  color: #4ba2ac;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #3c828a;
+}
+
+.bg-primary {
+  background-color: $primary !important;
+}
+
+.text-primary {
+  color: $primary !important;
+}
+
+.btn {
+  border-radius: 8px;
+}
+.btn-link {
+  font-weight: 400;
+  color: #4ba2ac;
+  text-decoration: underline;
+}
+
+.btn-link:hover {
+  color: #3c828a;
+}
+
+.border-container {
+  border-radius: 25px;
+  border: 1px solid #e1e1e1;
+  padding: 25px;
+}
+
+.border-small-container {
+  border-radius: 8px;
+  border: 1px solid $gray;
+  padding: 10px;
+}
+
+.btn-danger,
+.btn-check:checked + .btn-danger,
+.btn-check:active + .btn-danger,
+.btn-danger:active,
+.btn-danger.active,
+.show > .btn-danger.dropdown-toggle {
+  color: #000;
+  background-color: #f4a9a9 !important;
+  border-color: #f29f9f !important;
+}
+.btn-danger:hover {
+  background-color: #f3a4a4 !important;
+  border-color: #f29f9f !important;
+}
+
+.btn-outline-danger {
+  color: #f19494;
+  border-color: #f19494;
+}
+
+.btn-outline-danger:hover {
+  color: #000;
+  background-color: #f19494;
+  border-color: #f19494;
+}
+
+.navbar-filters {
+  input, select {
+    height: 40px;
+  }
+}
+
+.table-responsive {
+  overflow: inherit;
+}
+
+.page-item:not(.active) .page-link {
+  color: $primary;
+}
+
+.page-item.active .page-link {
+  background-color: $primary;
+  border-color: $primary;
+}
+
+.dataTables_wrapper .bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: $primary;
+}
+
+.table-responsive {
+  overflow: auto;
+}
+//IMPORT THE COMPONENTS
+
+@import 'scss/components/buttons';
+@import 'scss/components/mixins';
+@import 'scss/components/typography';
+
+//IMPORT THE SECTIONS
+
+@import 'scss/sections/navbar';
+@import 'scss/sections/herocontainer';
+
+// RESPONSIVE
+@media only screen and (min-width: 992px) {
+  .sidebar.collapse {
+    margin-left: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .top-bar li{
+    padding: 0.5rem !important;
+  }
+  .login-section {
+    .d-flex.justify-content-between {
+      flex-direction: column !important;
+      .btn-social {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  body.sidebarCollapse {
+    overflow: hidden;
+    .d-flex.flex-nowrap {
+      overflow: hidden;
+    }
+    .main {
+      position: relative;
+      .main-overlay {
+        content: '';
+        background-color: rgba(255,255,255,0.2);
+        backdrop-filter: blur(4px);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+      }
+      .hamburger-menu {
+        position: relative;
+        z-index: 9;
+        color: #4ba2ac;
+      }
+    }
+  }
+  .signin-wrapper {
+    margin-bottom: 20px;
+    .btn:first-child {
+      margin-left: 10px !important;
+    }
+  }
+  .account-wrapper {
+    .nav-link.dropdown-toggle {
+      padding-left: 0.5rem !important;
+      .user-info {
+        padding-left: 0 !important;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .intro-text {
+    width: 50% !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .intro-text {
+    width: 100% !important;
+    max-width: 70%;
+  }
+  #services {
+    #pills-tab {
+      .nav-item {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+    }
+  }
+  .main {
+    .navbar {
+      .container-fluid {
+        flex-wrap: nowrap !important;
+      }
+    }
+  }
+  .searchbar {
+    .form-group {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .intro-text {
+    top: 25% !important;
+  }
+}

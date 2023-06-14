@@ -1,0 +1,209 @@
+<div class="main-content border pt-3 pb-5 px-sm-5 px-2">
+  <div class="educators-section mt-4">
+
+    <!-- Body -->
+    <div class="container">
+
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <h3 class="text-start">{{ isAddMode ? 'Add' : 'Edit' }} <span class="primary-text"> Question</span></h3>
+        </div>
+        <div class="col">
+          <a routerLink="/system-admin/questions" class="btn btn-primary float-end">Go Back</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="border-container">
+            
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group mb-3 col-md-6">
+                  <label for="inputTitle" class="form-label">Title</label>
+                  <input [(ngModel)]="questionForm.title" type="text" id="inputTitle" class="form-control" placeholder="Enter Title">
+                  <div *ngIf="errors?.title" id="titleHelpBlock" class="text-danger form-text">
+                    {{ errors?.title }}
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-3 col-md-6">
+                <label for="inputType" class="form-label">
+                  Type <small>(Static questions will require a programmer to integrate)</small>
+                </label>
+                <select [(ngModel)]="questionForm.type" class="form-select" id="inputType">
+                  <option value="" selected disabled>Select Type</option>
+                  <option value="dynamic">Dynamic</option>
+                  <option value="static">Static</option>
+                </select>
+                <div *ngIf="errors?.type" id="typeHelpBlock" class="text-danger form-text">
+                  {{ errors?.type }}
+                </div>
+              </div>
+              <div *ngIf="questionForm.type == 'static'" class="form-group mb-3 col-md-6">
+                <label for="inputStaticType" class="form-label">Static Type</label>
+                <select [(ngModel)]="questionForm.static_type" id="inputStaticType" class="form-select">
+                  <option value="" selected disabled>Select Static Type</option>
+                  <option value="position">Position</option>
+                  <option value="google-map-address">Google Map Address</option>
+                  <option value="how-far-will-you-travel-to-work">How Far Will You Travel To Work</option>
+                </select>
+                <div *ngIf="errors?.static_type" id="staticTypeHelpBlock" class="text-danger form-text">
+                  {{ errors?.static_type }}
+                </div>
+              </div>
+
+              <ng-container 
+                *ngIf="
+                  questionForm.type == 'dynamic' ||
+                  (questionForm.type == 'static' && questionForm.static_type == 'how-far-will-you-travel-to-work')
+                "
+              >
+                <div class="form-group mb-3 col-md-6">
+                  <label for="inputFieldType" class="form-label">Field Type</label>
+                  <select [(ngModel)]="questionForm.field_type" class="form-select" id="inputFieldType">
+                    <option value="" selected disabled>Select Field Type</option>
+                    <option value="text">Text</option>
+                    <option value="select">Select</option>
+                    <option value="radio">Radio</option>
+                    <option value="checkbox">Checkbox</option>
+                    <option value="textarea">Textarea</option>
+                    <option value="slider">Slider</option>
+                  </select>
+                  <div *ngIf="errors?.field_type" id="fieldTypeHelpBlock" class="text-danger form-text">
+                    {{ errors?.field_type }}
+                  </div>
+                </div>
+
+                <ng-container >
+                  <h3 _ngcontent-coi-c76="" class="text-start mt-4">Data <span _ngcontent-coi-c76="" class="primary-text"> Matching</span></h3>
+
+                  <!-- Question Dependencies -->
+
+                  <div class="form-group">
+                    <h5 class="text-start mt-4">Dependencies</h5>
+                    <p>This question will only display if this condition exists in prior question.</p>
+                    
+                    <p>This question is dependent on</p>
+                    <select 
+                      [(ngModel)]="questionForm.dependency.question_uuid" 
+                      (change)="onQuestionDependencyChange($event)"
+                      id="inputDependency"                  
+                      class="form-select w-50"
+                    >
+                      <option value="" selected disabled>Please select question</option>
+                      <option value="">-</option>
+                      <option *ngFor="let question of questions; let i = index" [attr.data-index]="i" [value]="question?.uuid">
+                        {{ question.title }}
+                      </option>
+                    </select>
+
+                    <div *ngIf="questionForm?.dependency?.question_uuid || questionForm?.dependency?.question_uuid !== ''" class="question-items mt-4">
+                      <p>Options</p>
+                      <span>
+                        <div class="d-block">
+                          <div *ngFor="let fieldOption of fieldOptions">
+                            <input 
+                              type="checkbox" 
+                              [id]="fieldOption?.uuid" 
+                              [value]="fieldOption?.uuid" 
+                              style="height: auto !important;"
+                              (change)="onFieldOptionDependencyChange($event)"
+                              [checked]="questionForm.dependency?.field_options.includes(fieldOption?.uuid)"
+                              >
+                              <!-- [checked]="questionForm.dependency?.field_options.indexOf(fieldOption?.uuid) > -1" -->
+                              <!-- [checked]="options?.answer == null ? false : options?.answer.indexOf(fieldOption?.uuid) > -1" -->
+                            <label [for]="fieldOption?.uuid" style="margin-left: 7px;">{{ fieldOption?.option }}</label>
+                          </div>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+
+                  <!-- Field Options Table  -->
+                  <ng-container
+                    *ngIf="
+                      (questionForm.field_type !== '' &&
+                      questionForm.field_type !== 'text' &&
+                      questionForm.field_type !== 'textarea') ||
+                      (questionForm.static_type == 'how-far-will-you-travel-to-work')
+                    "
+                  >
+                    <div class="form-group col-md-6 mt-4 mb-3">
+                      <label for="inputQuestionLoading" class="form-label">Question Loading</label>
+                      <input [(ngModel)]="questionForm.question_loading" type="text" id="inputQuestionLoading" class="form-control" placeholder="Enter Question Loading">
+                      <div *ngIf="errors?.question_loading" id="questionLoadingHelpBlock" class="text-danger form-text mb-2">
+                        {{ errors?.question_loading }}
+                      </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <label class="form-label">Field Options</label>
+                      <div *ngIf="errors?.field_options" id="'ieldOptionsHelpBlock" class="text-danger form-text mb-2">
+                        {{ errors?.field_options }}
+                      </div>
+                      <table class="table table-sm">
+                        <thead>
+                          <th>Option</th>
+                          <!-- <th>Operator</th> -->
+                          <th>Score (%)</th>
+                          <th>Action</th>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let option of questionForm.field_options; let i = index; trackBy:trackByIndex;">
+                            <td style="width: 60%;">
+                              <input 
+                                [(ngModel)]="option.option" 
+                                [type]="questionForm.static_type == 'how-far-will-you-travel-to-work' ? 'text' : 'text'" 
+                                class="form-control col-form-label-sm" 
+                                [placeholder]="questionForm.static_type == 'how-far-will-you-travel-to-work' ? 'ex. 0-50' : 'Enter Option'"
+                              >
+                              <div *ngIf="errors && errors['field_options.' + i + '.option']" [id]="'fieldOptionsOptionHelpBlock' + i" class="text-danger form-text mb-2">
+                                {{ errors['field_options.' + i + '.option'] }}
+                              </div>
+                            </td>
+                            <!-- <td>
+                              <select [(ngModel)]="option.operator" class="form-control">
+                                <option value="=">=</option>
+                                <option value="<="><=</option>
+                                <option value=">=">>=</option>
+                                <option value="<>"><></option>
+                              </select>
+                              <div *ngIf="errors && errors['field_options.' + i + '.operator']" [id]="'fieldOptionsOperatorHelpBlock' + i" class="text-danger form-text mb-2">
+                                {{ errors['field_options.' + i + '.operator'] }}
+                              </div>
+                            </td> -->
+                            <td>
+                              <input [(ngModel)]="option.value" type="number" class="form-control col-form-label-sm" placeholder="Enter Value">
+                              <div *ngIf="errors && errors['field_options.' + i + '.value']" [id]="'fieldOptionsValueHelpBlock' + i" class="text-danger form-text mb-2">
+                                {{ errors['field_options.' + i + '.value'] }}
+                              </div>
+                            </td>
+                            <td>
+                              <a href="javascript:;" (click)="deleteOption(i)" class="btn btn-primary"><i class="bx bx-trash"></i></a> &nbsp;
+                              <!-- <a href="javascript:;" class="btn btn-outline-primary"><i class="bx bx-list-ul"></i></a> -->
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <a href="javascript:;" (click)="addOption()" class="btn btn-sm btn-primary float-end">Add Option</a>
+                      <div class="clearfix"></div>
+                    </div>
+                  </ng-container>
+
+                </ng-container>
+        
+              </ng-container>    
+            </div>
+
+            <button (click)="onSubmit()" type="submit" class="btn btn-primary mt-4 float-end">
+              {{ isAddMode ? 'Add' : 'Update' }}
+            </button>
+
+        </div>
+      </div>
+    </div>
+    <!-- Body -->
+
+  </div>
+</div>

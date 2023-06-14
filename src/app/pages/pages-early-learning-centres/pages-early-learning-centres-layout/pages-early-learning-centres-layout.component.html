@@ -1,0 +1,9 @@
+<div class="d-flex flex-nowrap">
+  <app-elc-sidebar></app-elc-sidebar>
+  <div class="main w-100 px-3 px-md-5 mb-md-5 mb-3">
+    <div class="main-overlay" (click)="collapse()"></div>
+    <app-elc-menu></app-elc-menu>
+    <app-elc-jumbotron></app-elc-jumbotron> 
+    <router-outlet></router-outlet>
+  </div>
+</div>

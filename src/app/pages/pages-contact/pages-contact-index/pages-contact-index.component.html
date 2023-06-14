@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<!-- Body -->
+<section>
+  <div class="container">
+    <div class="row my-5">
+      <div class="col-md-12">
+        <h4>Contact Us</h4>
+        <h2>Get In<span class="primary-text">Touch</span></h2>
+      </div>
+    </div>
+    <div class="border-container">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="row ">
+          <div class="col-md-6">
+            <div class="form-group mb-4">
+              <input type="text" formControlName="name" class="form-control" placeholder="Your Name *" value="" />
+              <div *ngIf="errors?.name" id="nameHelpBlock" class="text-danger form-text" [innerHtml]="errors?.name"></div>
+            </div>
+            <div class="form-group mb-4">
+              <input type="email" formControlName="email" class="form-control" placeholder="Your Email *" value="" />
+              <div *ngIf="errors?.email" id="emailHelpBlock" class="text-danger form-text" [innerHtml]="errors?.email"></div>
+            </div>
+            <div class="form-group mb-4">
+              <input type="text" formControlName="phone_number" class="form-control" placeholder="Your Phone Number *" value="" />
+              <div *ngIf="errors?.phone_number" id="phoneNumberHelpBlock" class="text-danger form-text" [innerHtml]="errors?.phone_number"></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <textarea formControlName="message" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+              <div *ngIf="errors?.message" id="messageHelpBlock" class="text-danger form-text" [innerHtml]="errors?.message"></div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group ">
+              <input type="submit"  name="btnSubmit" class="btn btn-primary" [value]=" btnBusy ? 'Sending...' : 'Send Message'" [disabled]="btnBusy"/>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Body -->
+
+<app-footer></app-footer>

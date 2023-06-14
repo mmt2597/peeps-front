@@ -1,0 +1,56 @@
+<div class="main-content border pt-3 pb-5 px-sm-5 px-2">
+  <div class="educators-section mt-4">
+
+    <!-- Body -->
+    <div class="container">
+
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <h3 class="text-start">{{ isAddMode ? 'Add' : 'Edit' }} <span class="primary-text"> What's New</span></h3>
+        </div>
+        <div class="col">
+          <a routerLink="/system-admin/whats-new" class="btn btn-primary float-end">Go Back</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="border-container">
+          <form [formGroup]= "articleForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-5">
+                <input #imageInput type="file" accept="image/*" (change)="onUploadImage(imageInput)" class="w-100" />
+                <div *ngIf="errors?.image" id="imageHelpBlock" class="text-danger form-text">
+                  {{ errors?.image }}
+                </div>
+                <img [src]="imagePreview == '' || imagePreview == null ? 'assets/images/blog-pic.png' : imagePreview" class="img-fluid">
+              </div>
+              <div class="col-md-7">
+                <div class="form-group">    
+                  <label for="inputTitle">Title</label>
+                  <input type="text" formControlName="title" class="form-control mt-2" id="inputTitle" aria-describedby="emailHelp" placeholder="Article Title">
+                  <div *ngIf="errors?.title" id="titleHelpBlock" class="text-danger form-text">
+                    {{ errors?.title }}
+                  </div>
+                </div>
+                <div class="form-group my-3">
+                  <label for="inputContent">Content</label>
+                  <div class="form-floating mt-2">
+                    <tinymce formControlName="content" id="inputContent" placeholder="Leave a comment here"></tinymce>
+                    <label for="inputContent">About Yourself</label>
+                  </div>
+                  <div *ngIf="errors?.content" id="contentHelpBlock" class="text-danger form-text">
+                    {{ errors?.content }}
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary col-3">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <!-- Body -->
+
+  </div>
+</div>

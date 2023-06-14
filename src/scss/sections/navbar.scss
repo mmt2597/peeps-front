@@ -1,0 +1,45 @@
+.top-bar {
+  margin: 20px 0;
+  .logo {
+    width: 100%;
+    height: 100%;
+  }
+  li {
+    padding: 1.5rem;
+    font-weight: 500;
+  }
+  a {
+    color: $gray-900;
+  }
+  a.active {
+    color: $primary;
+  }
+  .navbar-light .navbar-nav .show > .nav-link,
+  .navbar-light .navbar-nav .nav-link.active {
+    color: $primary;
+  }
+}
+.dropdown-menu-end li {
+  padding: 0 10px;
+  border-radius: 5px;
+
+  a {
+    color: $primary;
+  }
+  a:hover {
+    color: $white;
+    background-color: $primary;
+    border-radius: 5px;
+  }
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #4ba2ac;
+}
+
+.nav-pills .nav-link {
+  background-color: $lightpink;
+  border-radius: 8px;
+  color: $darkpink;
+}

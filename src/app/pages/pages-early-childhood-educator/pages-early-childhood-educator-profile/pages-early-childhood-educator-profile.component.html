@@ -1,0 +1,181 @@
+<div class="main-content border pt-3 pb-5 px-sm-5 px-2">
+
+  <!-- Form -->
+
+  <div class="personal-information-form mt-sm-4 mt-2">
+
+    <!-- Personal Information -->    
+    <h4 class="text-start mt-3 fw-bold">Personal Information</h4>
+    <div class="divider my-1"></div>
+
+    <div class="personal-information=section row g-4 mt-3">
+      <div class="col-md-4">
+        <label for="inputFirstName" class="form-label">Enter First Name</label>
+        <input [(ngModel)]="data.user.first_name" type="text" class="form-control" id="inputFirstName" placeholder="Enter First Name">
+        <div *ngIf="userErrors?.first_name" id="firstNameHelpBlock" class="text-danger form-text">
+          {{ userErrors?.first_name }}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="inputMiddleName" class="form-label">Enter Middle Name</label>
+        <input [(ngModel)]="data.user.middle_name" type="text" class="form-control" id="inputMiddleName" placeholder="Enter Middle Name">
+        <div *ngIf="userErrors?.middle_name" id="middleNameHelpBlock" class="text-danger form-text">
+          {{ userErrors?.middle_name }}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="inputLastName" class="form-label">Enter Last Name</label>
+        <input [(ngModel)]="data.user.last_name" type="text" class="form-control" id="inputLastName" placeholder="Enter Last Name">
+        <div *ngIf="userErrors?.last_name" id="lastNameHelpBlock" class="text-danger form-text">
+          {{ userErrors?.last_name }}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="inputPhoneNumber" class="form-label">Enter Phone Number</label>
+        <input [(ngModel)]="data.user.phone_number" type="number" class="form-control" id="inputPhoneNumber" placeholder="Enter Phone Number">
+        <div *ngIf="userErrors?.phone_number" id="phoneNumberHelpBlock" class="text-danger form-text">
+          {{ userErrors?.phone_number }}
+        </div>
+      </div>
+    </div>
+    <!-- ./Personal Information -->
+
+    <!-- Address -->
+    <h4 class="text-start mt-5 fw-bold">Address</h4>
+    <div class="divider my-1"></div>
+
+    <div class="address-section row g-4 mt-3">
+      <div class="col-md-12">
+        <label for="inputSearchAddress" class="form-label">Search Address</label>
+        <input [(ngModel)]="data.user.address" ngx-google-places-autocomplete [options]='options' (onAddressChange)="AddressChange($event)" class="form-control" id="inputSearchAddress" placeholder="Search Address"/>
+        <div *ngIf="userErrors?.address" id="addressHelpBlock" class="text-danger form-text">
+          {{ userErrors?.address }}
+        </div>
+      </div>
+      <!-- <div class="col-md-4">
+        <label for="inputSuburb" class="form-label">Suburb</label>
+        <input [(ngModel)]="data.user.suburb" type="text" class="form-control" id="inputSuburb" placeholder="Enter Suburb">
+        <div *ngIf="userErrors?.suburb" id="suburbHelpBlock" class="text-danger form-text">
+          {{ userErrors?.suburb }}
+        </div>
+      </div> -->
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">State</label>
+        <select [(ngModel)]="data.user.state" id="inputState" class="form-select">
+          <option value="" selected disabled>Choose...</option>
+          <option value="ACT">Australian Capital Territory (ACT)</option>
+          <option value="NSW">New South Wales (NSW)</option>
+          <option value="NT">Northern Territory (NT)</option>
+          <option value="QLD">Queensland (QLD)</option>
+          <option value="SA">South Australia (SA)</option>
+          <option value="TAS">Tasmania (TAS)</option>
+          <option value="VIC">Victoria (VIC)</option>
+          <option value="WA">Western Australia (WA)</option>
+        </select>
+        <div *ngIf="userErrors?.state" id="stateHelpBlock" class="text-danger form-text">
+          {{ userErrors?.state }}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="inputCity" class="form-label">Suburb</label>
+        <input [(ngModel)]="data.user.city" type="text" class="form-control" id="inputCity" placeholder="Enter City">
+        <div *ngIf="userErrors?.city" id="cityHelpBlock" class="text-danger form-text">
+          {{ userErrors?.city }}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="inputPostcode" class="form-label">Postcode</label>
+        <input [(ngModel)]="data.user.post_code" type="text" class="form-control" id="inputPostcode">
+        <div *ngIf="userErrors?.post_code" id="postCodeHelpBlock" class="text-danger form-text">
+          {{ userErrors?.post_code }}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="selectCountry" class="form-label">Country</label>
+        <select [(ngModel)]="data.user.country" class="form-select" id="selectCountry">
+          <option value="" selected disabled>Selecte Country</option>
+          <option value="Australia">Australia</option>
+          <option value="New Zealand">New Zealand</option>
+        </select>
+        <div *ngIf="userErrors?.country" id="countryHelpBlock" class="text-danger form-text">
+          {{ userErrors?.country }}
+        </div>
+      </div>
+    </div>
+    <!-- ./Address -->
+
+    <div class="row g-4">
+      <!-- Suitability Card Jurisdictions State -->
+      <!-- <div class="col-md-6">
+        <h4 class="text-start mt-5 fw-bold">Suitability Card Jurisdictions State</h4>
+        <div class="divider my-1"></div>
+        
+        <div class="suitability-card-jurisdictions-state">
+          <div class="col-md-12 mt-4">
+            <label for="selectCardState" class="form-label">Select State</label>
+            <select class="form-select" id="selectCardState">
+              <option value="" selected disabled>Selecte State</option>
+            </select>
+          </div>
+        </div>
+      </div> -->
+      <!-- ./Suitability Card Jurisdictions State -->
+
+      <!-- How Far Will You Travel To Work -->
+      <!-- <div class="col-md-6">
+        <h4 class="text-start mt-5 fw-bold">How far will you travel to work?</h4>
+        <div class="divider my-1"></div>
+        
+        <div class="suitability-card-jurisdictions-state">
+          <div class="col-md-12 mt-4">
+            <label for="selectCardState" class="form-label">Select Radius</label>
+            <select name="" id="" class="form-select">
+              <option value="" disabled selected>Select Radius</option>
+            </select>
+          </div>
+        </div>
+      </div> -->
+      <!-- ./How Far Will You Travel To Work -->
+    </div>
+
+    <!-- <div class="col-6">
+        <div *ngFor="let question of data.questions; let i = index" class=" mb-5">
+          <div class="row g-3">
+            <h4 class="text-start my-2">
+              {{ question.screen_label }}
+            </h4>
+            <p class="my-0">{{ question?.description }}</p>
+            <div class="form-floating">
+              <app-form-field-type 
+                [(options)]="data.questions[i]" 
+                [attr.data-index]="i"
+              ></app-form-field-type>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="mt-5"></div>
+      <div class="row mt-5">
+        <div 
+          *ngFor="let question of data.questions; let i = index" 
+          [class]="question?.class_wrapper !== null ? question?.class_wrapper : 'col-md-6'">
+          <h4 class="text-start my-3">{{ question.screen_label }}</h4>
+          <p class="my-0">{{ question?.description }}</p>
+          <app-form-field-type 
+            [(options)]="data.questions[i]" 
+            [attr.data-index]="i"
+          ></app-form-field-type>
+        </div>
+      </div>
+
+  </div> <!-- ./Personal Information Form -->
+
+  <!-- ./Form -->
+
+  <div class="d-flex justify-content-between mt-5">
+    <button (click)="onUpdate()" class="btn btn-primary"><i class="bx bx-save"></i> Save</button>
+    <!-- <button class="btn btn-primary">Continue <i class="bx bx-chevron-right-circle"></i></button> -->
+  </div>
+
+</div>

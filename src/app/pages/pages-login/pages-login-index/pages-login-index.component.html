@@ -1,0 +1,75 @@
+<app-header></app-header>
+
+<!-- Body -->
+
+<section  class="login-section">
+  <div class="round-bg-circle1"></div>
+  <div class="round-bg-circle2"></div>
+  <div class="round-bg-circle3"></div>
+  <div class="round-bg-circle4"></div>
+  <div class="container">
+    <div class="row border-container my-3 ">
+      <div class="col-md-7 mt-6 d-flex align-items-center justify-content-center ">
+        <img class="img-fluid" src="assets/images/headerimage.png" alt=""/>
+      </div>
+      <div class="col-md-5 ">
+        <h4 class="text-start"><img class="ms-3"src="assets/images/icons/login.png"/><span class="ms-3">Login Into your Account</span></h4>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group d-flex justify-content-between">
+            <button (click)="socialLogin('google')" class="btn btn-social btn-block" type="button">
+              <span>
+                <img class="icons" src="assets/images/icons/googlelogo.png"/>
+                Sign in with Google
+              </span>
+            </button>
+            <button (click)="socialLogin('facebook')" class="btn btn-social btn-block" type="button">
+              <span>
+                <img class="icons"src="assets/images/icons/facebooklogo.png"/>
+                Sign in with Facebook
+              </span>
+            </button>
+          </div>
+          <div class="clearfix"></div>
+          <div class="text-center my-4 hr-border"><span class="circle"> OR</span>  </div>
+
+          <div *ngIf="errors?.general" class="alert alert-danger px-3 py-2">
+            <div id="emailHelpBlock" class="text-danger form-text">
+              <i class="bx bx-info-circle"></i>
+              {{ errors?.general }}
+            </div>
+          </div>
+
+          <div class="form-group mb-4">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control mt-2" formControlName="email" id="email" placeholder="Enter email">
+            <div *ngIf="errors?.email" id="emailHelpBlock" class="text-danger form-text">
+              {{ errors?.email }}
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <label for="password">Password</label>
+            <input type="password" class="form-control mt-2" formControlName="password" id="password" placeholder="Password">
+            <div *ngIf="errors?.password" id="passwordHelpBlock" class="text-danger form-text">
+              {{ errors?.password }}
+            </div>
+          </div>
+          <div class="form-group form-check mb-4">
+            <input type="checkbox" class="form-check-input" id="remember">
+            <label class="form-check-label" for="remember">Remember Me</label>
+            <a routerLink="/forgot-password" class="float-end">Forgot Password?</a>
+          </div>
+          <div class="d-grid mb-4">
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+          </div>
+          <div class="form-group mb-4">
+            <label class="form-check-label" for="exampleCheck1">Not Registered Yet? 
+            <a routerLink="/register" class="ml-3">Create Account</a></label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Body -->
+
+<app-footer></app-footer>

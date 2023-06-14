@@ -1,0 +1,155 @@
+@import '../../../../scss/custom.scss';
+
+.about {
+  position: relative;
+
+  .about-container-bg {
+    padding: 4rem;
+    border-radius: 40px;
+    border: 1px solid #f1f5f8;
+    background: #fff -webkit-gradient(linear, left top, right top, from(#ecf2f6), color-stop(70.31%, rgba(236, 242, 246, 0)));
+    background: #fff -webkit-linear-gradient(left, #ecf2f6 0%, rgba(
+            236,
+            242,
+            246,
+            0
+          )
+          70.31%);
+    background: #fff -o-linear-gradient(left, #ecf2f6 0%, rgba(236, 242, 246, 0)
+          70.31%);
+    background: #fff
+      linear-gradient(90deg, #ecf2f6 0%, rgba(236, 242, 246, 0) 70.31%);
+    position: relative;
+    .about-circle-top {
+      position: absolute;
+      top: -40px;
+      right: 2%;
+      background-color: $primary;
+      border-radius: 50%;
+      width: 85px;
+      height: 85px;
+      opacity: 0.5;
+    }
+    .about-circle-lightpinkmid {
+      position: absolute;
+      top: 80px;
+      left: 30%;
+      background-color: $lightpink;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      opacity: 0.4;
+    }
+    .about-circle-lightpinksmall {
+      position: absolute;
+      top: 125px;
+      right: 5%;
+      background-color: $lightpink;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+    }
+    .about-circle-lightpinklarge {
+      position: absolute;
+      bottom: -8%;
+      left: 8%;
+      background-color: $lightpink;
+      border-radius: 50%;
+      width: 105px;
+      height: 105px;
+      z-index: -1;
+    }
+  }
+  .mypic {
+    position: relative;
+    img {
+      position: relative;
+    }
+  }
+}
+.border-container {
+  border-radius: 25px;
+  border: 1px solid $gray;
+  padding: 25px;
+}
+.border-small-container {
+  border-radius: 8px;
+  border: 1px solid $gray;
+  padding: 10px;
+}
+
+.testimonial-background {
+  position: relative;
+  .roundradiusbg-primarymid {
+    width: 90px;
+    height: 90px;
+    background-color: $primary;
+    border-radius: 50%;
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    z-index: -1;
+    opacity: 0.5;
+  }
+  .roundradiusbg-lightpink {
+    width: 60px;
+    height: 60px;
+    background-color: $lightpink;
+    border-radius: 50%;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    z-index: -1;
+  }
+  .roundradiusbg-primarysmall {
+    width: 30px;
+    height: 30px;
+    background-color: $primary;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 16%;
+    right: 33%;
+    z-index: -1;
+    opacity: 0.5;
+  }
+  .roundradiusbg-lightpinklarge {
+    width: 104px;
+    height: 104px;
+    background-color: $lightpink;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -5%;
+    left: 20%;
+    z-index: -1;
+  }
+}
+#quote-carousel {
+  position: relative;
+  .testimonials {
+    padding: 40px;
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50px;
+      position: absolute;
+      top: -35px;
+      left: -35px;
+    }
+    .testimonial-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+  }
+}
+/* End carousel */
+
+/**
+  MEDIA QUERIES
+*/
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #quote-carousel {
+    position: relative;
+  }
+}

@@ -1,0 +1,49 @@
+@import '../../../scss/custom'; 
+
+footer {
+  background-color: $primary;
+  position: relative;
+  margin-top: 180px;
+  color: $white;
+  .subscribe-container {
+    display: block;
+    align-items: center; // does vertically center the desired content
+    justify-content: center; // horizontally centers single line items
+    text-align: center; // optional, but helps horizontally center text that breaks into multiple lines
+    position: relative;
+    top: -140px;
+    margin-bottom: -100px;
+
+    button.btn {
+      background-color: $dark;
+      color: $white;
+    }
+  }
+  h2 {
+    color: $dark;
+  }
+  p {
+    color: $white;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      padding: 5px 0;
+      a,
+      a:hover,
+      a:active,
+      a:focus {
+        color: $white;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.footer-admin {
+  margin-top: 10px !important;
+}

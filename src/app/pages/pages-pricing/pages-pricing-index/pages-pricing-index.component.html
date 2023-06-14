@@ -1,0 +1,146 @@
+<app-header></app-header>
+
+<!-- Body -->
+<section>
+  <div class="container">
+    <div class="row my-5">
+      <div class="col-md-12">
+        <h4>Pricing Built For Businesses For All Sizes</h4>
+        <h2>Simple Pricing<span class="primary-text"> For Everyone</span></h2>
+      </div>
+    </div>
+    <div class="border-container pricing">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="pricing-top pricing-light-container py-6">
+                <p>Free</p>
+                <h1>$0</h1>
+                <p>
+                </p>
+                <p> <a href="#" class="btn btn-lightpink">Early Childhood Educator</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="row ">
+            <div class="col-md-4">
+              <div class="pricing-top py-6">
+                <p>  </p>
+                <h1>
+                  <div class="btn btn-primary">Early Learning Center</div>
+                </h1>
+                <!-- <p class="text-end primary-text">Save 20%</p> -->
+                <!-- <p class="text-end"> <img class="" src="assets/images/icons/arrow.png"/></p> -->
+                <!-- <div class="btn-group btn-toggle peeps-btn-toggle  d-flex align-items-center"> 
+                  <button class="btn btn-secondary">Monthly</button>
+                  <button class="btn btn-primary active">Yearly</button>
+                </div> -->
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="pricing-top py-6">
+                <p>Starter</p>
+                <h1>$199</h1>
+                <p>
+                  <small>Single search for 10 Educators</small>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="pricing-top pricing-primary-container py-6">
+                <p>Premium</p>
+                <h1>$1999</h1>
+                <p>
+                  <small>Up to 11 Searchers valid for 6 Months</small>
+                </p>
+              </div>
+            </div>
+            <!-- <div class="col-md-3">
+              <div class="pricing-top py-6">
+                <p>Enterprise</p>
+                <h1>$8999</h1>
+                <p>
+                  <small>Up to 50 searches valid for 12 Months</small>
+                </p>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="border-container mb-4">
+        <div class="row">
+          <div class="col-md-3  d-flex align-items-center">
+            <p class="text-center tick mb-0 ">Premium Candidates</p>
+          </div>
+          <div class="col-md-3">
+            <p class="text-center tick  mb-0"><i class='bx bxs-check-circle' ></i></p>
+          </div>
+          <div class="col-md-3">
+            <p class="text-center tick  mb-0"><i class='bx bxs-check-circle' ></i></p>
+          </div>
+          <div class="col-md-3">
+            <p class="text-center tick  mb-0"><i class='bx bxs-check-circle' ></i></p>
+          </div>
+        </div>
+      </div>
+      <div class="border-container mb-4">
+        <div class="row">
+          <div class="col-md-3 d-flex align-items-center">
+            <p class="text-center tick mb-0">Basic Support</p>
+          </div>
+          <div class="col-md-3">
+            <p class="text-center tick  mb-0"></p>
+          </div>
+          <div class="col-md-3">
+            <p class="text-center tick  mb-0"><i class='bx bxs-check-circle' ></i></p>
+          </div>
+          <div class="col-md-3">
+            <p class="text-center tick  mb-0"><i class='bx bxs-check-circle' ></i></p>
+          </div>
+        </div>
+      </div>
+      <div class="border-container mb-4">
+        <div class="row">
+          <div class="col-md-3  d-flex align-items-center">
+            <p class="text-center tick mb-0 ">Detailed Customer Support</p>
+          </div>
+          <div class="col-md-3">
+            <p class="text-center tick  mb-0"></p>
+          </div>
+          <div class="col-md-3">
+            <p class="text-center tick  mb-0"></p>
+          </div>
+          <div class="col-md-3">
+            <p class="text-center tick  mb-0"><i class='bx bxs-check-circle' ></i></p>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="user?.role == 'Early Learning Centres'" class="border-container mb-4">
+        <div class="row">
+          <div class="col-md-3  d-flex align-items-center">
+            <p class="text-center tick mb-0 "></p>
+          </div>
+          <div class="col-md-3">
+            <p class="text-center tick  mb-0"></p>
+          </div>
+          <div class="col-md-3">
+            <p class="text-center tick  mb-0">
+              <button type="button" (click)="checkout('PEEPS-4-U-STARTER-AUD-Monthly')" class="btn btn-primary">Buy</button>
+            </p>
+          </div>
+          <div class="col-md-3">
+            <p class="text-center tick  mb-0">
+              <button type="button" (click)="checkout('PEEPS-4-U-SEARCH-AUD-Monthly')" class="btn btn-primary">Buy</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Body -->
+
+<app-footer></app-footer>

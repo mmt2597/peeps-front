@@ -1,0 +1,63 @@
+<div class="main-content border pt-3 pb-5 px-sm-5 px-2">
+  <div class="educators-section mt-sm-4 mt-2">
+
+    <app-admin-search-bar 
+      title="Early Child Care" 
+      highlightText="Educator"
+      [showButton]="true"
+      buttonText="Add New Educator"
+      (buttonClick)="addEducator()"
+      (onSearch)="search($event)"
+    >
+    </app-admin-search-bar>
+
+    <div class="container">
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <div class="row">
+            <div class="">
+              <div class="table-responsive pb-4">
+                
+                <table datatable [dtOptions]="dtOptions" class="table">
+                  <thead class="table-dark border-none">
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Email Address</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">Last Used</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="users?.length != 0">
+                    <tr *ngFor="let user of users">
+                      <td>
+                        {{ user?.first_name }} {{ user?.last_name }}
+                      </td>
+                      <td>{{ user?.email }}</td>
+                      <td>{{ user?.suburb }}, {{ user?.city }}</td>
+                      <td></td>
+                      <td>
+                        <div class="dropdown">
+                          <button class="btn btn-primary dropdown-toggle" type="button" [id]="user?.uuid" data-bs-toggle="dropdown" aria-expanded="false">
+                          More Actions
+                          </button>
+                          <ul class="dropdown-menu" [attr.aria-labelledby]="user?.uuid">
+                            <li><a [routerLink]="[user?.uuid, 'edit']" class="dropdown-item">Edit</a></li>
+                            <li><a href="javascript:;" (click)="onDelete(user?.uuid)" class="dropdown-item" >Delete</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="users?.length == 0"></tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,85 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-align: center;
+}
+h1 {
+  font-size: 2.8125rem;
+}
+h2 {
+  font-size: 2.5rem;
+}
+h3 {
+  font-size: 1.875rem;
+}
+h4 {
+  font-size: 20px;
+  color: $text-light;
+  line-height: 1.875rem;
+}
+h5 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+h6 {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+p {
+  line-height: 1.25rem;
+  color: $secondary;
+  letter-spacing: 0.2px;
+}
+.primary-text {
+  color: $primary;
+}
+.secondary-text {
+  color: $secondary;
+}
+.light-pinktext {
+  color: $lightpink;
+}
+.dark-pinktext {
+  color: $darkpink;
+}
+.tag a {
+  background-color: $lightpink;
+  color: $darkpink;
+  border-radius: 25px;
+  border: 1px solid $darkpink;
+  padding: 5px 20px;
+  text-decoration: none;
+}
+.hr-border {
+  background-color: #cdcdcd;
+  height: 1px;
+  .circle {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: -0.6em;
+    margin-left: -1.5em;
+    background-color: white;
+    width: 3em;
+    text-align: center;
+  }
+}
+.table-container {
+  background-color: $gray;
+  border-radius: 8px;
+  padding: 15px;
+  .table-heading-primary {
+    background-color: $primary;
+    border-radius: 5px;
+    color: $white;
+    font-weight: 600;
+    padding: 10px;
+  }
+  .table-content {
+    padding: 10px;
+    border-bottom: 1px dotted $text-light;
+  }
+}

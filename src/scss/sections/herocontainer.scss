@@ -1,0 +1,149 @@
+.background-circle {
+  position: relative;
+  .circle-top {
+    position: absolute;
+    top: -118px;
+    left: -60px;
+    background-color: $primary;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    opacity: 0.5;
+  }
+  .circle-middle {
+    width: 40px;
+    height: 40px;
+    opacity: 0.5;
+    background-color: $primary;
+    border-radius: 50%;
+    position: absolute;
+    top: 140px;
+    left: 45%;
+    z-index: -1;
+  }
+  .circle-pink {
+    width: 40px;
+    height: 40px;
+    opacity: 0.9;
+    background-color: $lightpink;
+    border-radius: 50%;
+    position: absolute;
+    top: 370px;
+    left: 6%;
+    z-index: -1;
+  }
+  .circle-bottom {
+    position: absolute;
+    top: 500px;
+    left: 25%;
+    background-color: $primary;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    opacity: 0.3;
+    z-index: -1;
+  }
+}
+.intro-section {
+  margin: 0 3rem;
+  .intros {
+    h1 {
+      font-size: 2.813rem;
+      font-weight: 700;
+      line-height: 3.5rem;
+      margin-top: 3rem;
+      text-align: left;
+    }
+    .primary {
+      color: $primary;
+    }
+    h3 {
+      font-weight: 700;
+    }
+    h5 {
+      text-align: left;
+    }
+    p {
+      font-size: 1.125rem;
+      line-height: 2.2rem;
+      color: $secondary;
+      padding-top: 1rem;
+    }
+  }
+  input {
+    -webkit-box-shadow: 0px 0px 16px -5px rgba(0, 0, 0, 0.23);
+    box-shadow: 0px 0px 16px -5px rgba(0, 0, 0, 0.23);
+  }
+}
+.img-box {
+  width: 650px;
+  position: relative;
+}
+.pic-seven {
+  width: 100%;
+}
+.pic-one {
+  width: 625px;
+  position: absolute;
+  right: 0;
+}
+.pic-two {
+  width: 650px;
+  position: absolute;
+  left: -93px;
+  top: -60px;
+  animation-delay: 0.3s;
+}
+.pic-three {
+  width: 300px;
+  position: absolute;
+  left: -79px;
+  bottom: 0px;
+  animation-delay: 0.4s;
+}
+.pic-four {
+  width: 90px;
+  position: absolute;
+  right: 24px;
+  bottom: 1px;
+  animation-delay: 0.6s;
+}
+.pic-five {
+  width: 550px;
+  position: absolute;
+  right: 47px;
+  top: 50px;
+  animation-delay: 0.6s;
+}
+.pic-six {
+  width: 500px;
+  position: absolute;
+  right: 100px;
+  bottom: 0px;
+}
+/*.header-image {
+  position: relative;
+  .header-image-preview {
+    .header-image-preview img {
+      position: absolute;
+      .header-image-preview img:nth-child(1) {
+        position: absolute;
+        top: 2px;
+        z-index: 1;
+        border: 1px solid #cc0000;
+      }
+
+      .header-image-preview img:nth-child(2) {
+        position: absolute;
+        top: 2px;
+        index: 2;
+      }
+
+      .header-image-preview img:nth-child(3) {
+      }
+
+      .header-image-preview img:nth-child(4) {
+      }
+    }
+  }
+}*/

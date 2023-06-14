@@ -1,0 +1,51 @@
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+
+//MT THEME COLORS
+
+$text-dark: #252b42;
+$primary: #4ba2ac;
+$secondary: #737373;
+$darkpink: #f19494;
+$lightpink: #fde6ea;
+$light-green: #e3edec;
+$text-light: #606060;
+$dark-green: #127682;
+$gray: #e1e1e1;
+//WHTE & GRAY COLORS
+$white: #fff;
+//BUTTON COLOR CHANGE
+$danger: #f19494;
+
+$theme-colors: (
+  "primary": $primary,
+);
+
+
+// Slider
+.ngx-slider {
+  .ngx-slider-bar {
+    background: #EEE !important;
+  }
+
+  .ngx-slider-pointer {
+    background: #26A69A !important; 
+    width: 25px !important;
+    height: 25px !important;
+
+    &::after {
+      width: 7px !important;
+      height: 7px !important;
+      top: 9px !important;
+      left: 9px !important;
+    }
+
+    &.ngx-slider-active:after {
+      background-color: #FFF !important;
+    }
+  }
+
+  .ngx-slider-tick {
+    background-color: #26A69A !important;
+  }
+}

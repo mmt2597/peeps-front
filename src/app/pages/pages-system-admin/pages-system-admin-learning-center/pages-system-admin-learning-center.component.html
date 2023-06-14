@@ -1,0 +1,52 @@
+<div class="main-content border pt-3 pb-5 px-sm-5 px-2">
+  <div class="educators-section mt-4">
+
+
+    <app-admin-search-bar 
+      title="Early Learning" 
+      highlightText="Centre"
+      [showButton]="true"
+      buttonText="Add New Center"
+      (buttonClick)="addNewCenter()"
+      (onSearch)="search($event)"
+    >
+    </app-admin-search-bar>
+
+    <!-- Body -->
+    <div class="container">
+      <div class="row">
+        <div class="border-container">
+          <div class="table-responsive pb-4">
+          
+            <table datatable [dtOptions]="dtOptions" class="table">
+              <thead class="table-dark border-none"></thead>
+              <tbody *ngIf="centerProfiles?.length != 0">
+                <tr *ngFor="let centerProfile of centerProfiles">
+                  <td [innerHtml]="centerProfile.center_name"></td>
+                  <td>{{ centerProfile.suburb }}, {{ centerProfile.city }}</td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle" type="button" [id]="centerProfile?.uuid" data-bs-toggle="dropdown" aria-expanded="false">
+                      More Actions
+                      </button>
+                      <ul class="dropdown-menu" [attr.aria-labelledby]="centerProfile?.uuid">
+                        <li><a [routerLink]="[centerProfile?.uuid, 'edit']" class="dropdown-item">Edit</a></li>
+                        <li><a href="javascript:;" (click)="deleteCentre(centerProfile?.uuid)" class="dropdown-item">Delete</a></li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              <tbody *ngIf="centerProfiles?.length == 0"></tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Body -->
+
+  </div>
+</div>

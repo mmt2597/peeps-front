@@ -1,0 +1,35 @@
+<app-header></app-header>
+
+<!-- Body -->
+
+<section>
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <h4>Blog</h4>
+        <h2>What's <span class="primary-text">New</span></h2>
+      </div>
+    </div>
+    <div class="border-container article-wrapper">
+      <div *ngFor="let article of articles; let i = index" class="row mb-5">
+        <div class="col-md-5">
+          <img [src]="article?.image_url" class="img-fluid blog-pica mx-auto d-block rounded border p-1"/>
+        </div>
+        <div class="col-md-7">
+          <div class="tag mb-3"><a href="#">Latest</a></div>
+          <h3 class="text-start primary-text">{{ article?.title }}</h3>
+          <app-read-more 
+            class="article-content" 
+            [id]="'article-content' + i" 
+            [text]="article?.content" 
+            [maxLength]="1000">
+          </app-read-more>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Body -->
+
+<app-footer></app-footer>

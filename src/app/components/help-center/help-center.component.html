@@ -1,0 +1,30 @@
+<section>
+  <div class="container">
+    <div class="row my-5">
+      <div class="col-md-12">
+          <h4>Help Center</h4>
+          <h2>Helpful Hints <span class="primary-text">And FAQ</span></h2>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+
+        <div class="accordion" id="accordionExample">
+          <div *ngFor="let faq of faqs; let index = index" class="accordion-item">
+            <h2 class="accordion-header" [id]="'heading' + faq?.uuid">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + faq?.uuid" aria-expanded="true" [attr.aria-controls]="'collapse' + faq?.uuid">
+                <h5 class="mt-3 d-flex align-items-center">{{ faq?.question }}</h5>
+              </button>
+            </h2>
+            <div [id]="'collapse' + faq?.uuid" class="accordion-collapse collapse" [class.show]="index == 0" [attr.aria-labelledby]="'heading' + faq?.uuid">
+              <div class="accordion-body">
+                {{ faq?.answer }}
+              </div>
+            </div> 
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

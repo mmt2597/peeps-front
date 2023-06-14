@@ -1,0 +1,59 @@
+<div class="main-content border pt-3 pb-5 px-sm-5 px-2">
+  <div class="educators-section mt-4">
+
+    <app-admin-search-bar 
+      title="Questions" 
+      highlightText=""
+      [showButton]="true"
+      buttonText="Add Question"
+      (buttonClick)="addQuestion()"
+      (onSearch)="search($event)"
+    >
+    </app-admin-search-bar>
+
+    <!-- Body -->
+    <div class="container">
+
+      <div class="row">
+        <div class="pb-3 border-0">
+          <a routerLink="/system-admin/role-questions" class="btn btn-primary">Profile Questions</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="border-container">
+
+            <div class="table-responsive pb-4">
+              <table datatable [dtOptions]="dtOptions" class="table">
+                <thead class="table-dark border-none"></thead>
+                <tbody *ngIf="questions?.length != 0">
+                  <tr *ngFor="let question of questions">
+                    <td>{{ question?.title }}</td>
+                    <td>{{ question?.type }}</td>
+                    <td>{{ question?.field_type }}</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" [id]="question?.uuid" data-bs-toggle="dropdown" aria-expanded="false">
+                          More Actions
+                        </button>
+                        <ul class="dropdown-menu" [attr.aria-labelledby]="question?.uuid">
+                          <li><a [routerLink]="[question?.uuid, 'edit']" class="dropdown-item">Edit</a></li>
+                          <li>
+                            <a href="javascript:;" (click)="delete(question?.uuid)" class="dropdown-item">Delete</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="questions?.length == 0"></tbody>
+              </table>
+            </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- Body -->
+
+  </div>
+</div>

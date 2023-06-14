@@ -1,0 +1,66 @@
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="subscribe-container">
+          <h4>Subscribe To Newsletters</h4>
+          <h2 class="mb-4">Get the Latest <span class="primary-text">Updates</span></h2>
+          <form action="#" method="Post">
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-4">
+                <input [(ngModel)]="email" type="text" class="form-control mb-4" name="text" placeholder="Enter Your Email Address">
+              </div>
+              <div class="col-md-2">
+                <button type="button" (click)="subscribe()" class="btn btn-dark w-100">Subscribe</button>
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <p><img alt="" src="assets/images/Whitelogo.png"/></p>
+        <p>PEEPS 4 U is a new innovative way to match
+          employers to educators. You no longer
+          need to wait to see who applies, PEEPS 4 U
+          will do all the work for you.
+        </p>
+      </div>
+      <div class="col-md-3">
+        <h5 class="text-start">Main Menu</h5>
+        <ul>
+          <li><a [routerLink]="['/']">Home</a></li>
+          <li><a [routerLink]="['/how-it-works']">How it Works</a></li>
+          <li><a [routerLink]="['/about']">About Us</a></li>
+          <li><a [routerLink]="['/whats-new']">What's New</a></li>
+          <li><a [routerLink]="['/pricing']">Pricing</a></li>
+          <li><a [routerLink]="['/contact']">Contact</a></li>
+          <li><a [routerLink]="['/privacy-policy']">Privacy Policy</a></li>
+          <!-- <li><a [routerLink]="['/terms-of-use']">Terms of Use</a></li> -->
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5 class="text-start">Early Learning Centers</h5>
+        <ul>
+          <li><a href="javascript:void(0)" (click)="redirectTo('/early-learning-centres')">Find a Candidate</a></li>
+          <li><a href="javascript:void(0)" (click)="redirectTo('/early-learning-centres')">Company Profile</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5 class="text-start">Early Childhood Educators</h5>
+        <ul>
+          <li><a href="javascript:;" (click)="redirectTo('/early-childhood-educator')">Candidate Profile</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <hr>
+        <p class="text-center mt-4">© Copyright {{ fullYear }}. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>

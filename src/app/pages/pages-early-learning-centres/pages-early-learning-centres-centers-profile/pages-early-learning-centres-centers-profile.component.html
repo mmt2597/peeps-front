@@ -1,0 +1,60 @@
+<div class="main-content border pt-3 pb-5 px-sm-5 px-2">
+  <div class="work-experience-form mt-5">
+
+    <app-admin-search-bar
+      title="Your Center" 
+      highlightText="Profiles"
+      [showButton]="true"
+      buttonText="Create Center Profile"
+      (buttonClick)="onAddCenterProfile()"
+      (onSearch)="search($event)"
+    ></app-admin-search-bar>
+
+    <!-- Body -->
+    <div class="container">
+
+      <div class="tab-content" id="pills-tabContent">
+        <div class="row">
+          <!---->
+          <div class="">
+            <div class="table-responsive pb-4">
+
+              <table datatable [dtOptions]="dtOptions" class="table">
+                <thead class="table-dark border-none"></thead>
+                <tbody *ngIf="centerProfiles?.length != 0">
+                  <tr *ngFor="let item of centerProfiles">
+                    <td [innerHtml]="item?.center_name"></td>
+                    <td>{{ item?.address }}</td>
+                    <td></td>
+                    <td>{{ item?.last_used_at | date }}</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" [id]="item?.uuid" data-bs-toggle="dropdown" aria-expanded="false">
+                        More Actions
+                        </button>
+                        <ul class="dropdown-menu" [attr.aria-labelledby]="item?.uuid">
+                          <!-- <li><a class="dropdown-item" href="#">Select Centre</a></li> -->
+                          <li>
+                            <a [routerLink]="[item?.uuid, 'edit']" class="dropdown-item">Edit Centre</a>
+                          </li>
+                          <li>
+                            <a href="javascript:;" (click)="delete(item?.uuid)" class="dropdown-item">Delete Centre</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="centerProfiles?.length == 0"></tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Body -->
+
+  </div>
+</div>

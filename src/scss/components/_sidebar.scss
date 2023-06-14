@@ -1,0 +1,109 @@
+.sidebar {
+  direction: ltr;
+  max-width: 267px;
+  min-width: 267px;
+  transition: margin-left .35s ease-in-out,left .35s ease-in-out,margin-right .35s ease-in-out,right .35s ease-in-out;
+  height: 100vh;
+  background-color: #e1e1e1 !important;
+
+  ul.nav {
+    height: calc(100% - 416px);
+    overflow: auto;
+    flex-wrap: nowrap;
+
+    /* ===== Scrollbar CSS ===== */
+    /* Firefox */
+    scrollbar-width: auto;
+    scrollbar-color: #4ba2ac #e1e1e1;
+
+    /* Chrome, Edge, and Safari */
+    &::-webkit-scrollbar {
+      width: 5px;
+      display: none;
+      transition: all 300ms ease-in-out;
+    }
+
+    &:hover::-webkit-scrollbar {
+      display: block !important;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #e1e1e1;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #4ba2ac;
+      border-radius: 10px;
+      border: 0px solid #4ba2ac;
+    }
+  }
+
+  .nav-pills .nav-link {
+    font-weight: 600;
+  }
+
+  .nav-pills .nav-link:not(.active) {
+    background-color: transparent;
+    color: #4ba2ac;
+  }
+
+  .contact-support {
+    width: 229px;
+    height: 119px;
+    background-color: #4BA2AC;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: -50%;
+    }
+
+    .btn.contact-us {
+      background-color: #252B42;
+      width: 136px;
+      height: 36px;
+      z-index: 2;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.sidebar.collapse {
+  margin-left: -267px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .contact-support {
+    width: 209px !important;
+    height: 99px !important;
+
+    img {
+      position: unset !important;
+      margin-top: -48px;
+    }
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}

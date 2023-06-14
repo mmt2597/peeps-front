@@ -1,0 +1,88 @@
+<div class="main-content border pt-3 pb-5 px-sm-5 px-2">
+  <div class="educators-section mt-4">
+
+    <!-- Body -->
+    <div class="container">
+
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <h3 class="text-start">{{ isAddMode ? 'Add' : 'Edit' }} <span class="primary-text"> FAQ</span></h3>
+        </div>
+        <div class="col">
+          <a routerLink="/system-admin/help-centre" class="btn btn-primary float-end">Go Back</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="border-container">
+          <form [formGroup]="faqForm" (ngSubmit)="onSubmit()">
+          
+            <div class="row">
+
+              <div class="form-group mb-3 col-md-12">
+                <label for="inputQuestion" class="form-label">FAQ</label>
+                <input type="text" formControlName="question" class="form-control" placeholder="Enter Question">
+                <div *ngIf="errors?.question" id="questionHelpBlock" class="text-danger form-text">{{ errors?.question }}</div> 
+              </div>
+
+              <div class="form-group mb-3 col-md-6">
+                <label for="inputType" class="form-label">Profile</label>
+                <select (ngModelChange)="faqForm.controls['category'].setValue('')" formControlName="role" class="form-control" id="inputType">
+                  <option value="" selected disabled>Please Select Profile</option>
+                  <option value="Static Page">Static Page</option>
+                  <option value="Early Learning Centres">Early Learning Centres</option>
+                  <option value="Early Childhood Educator">Early Childhood Educator</option>
+                </select>
+                <div *ngIf="errors?.role" id="roleHelpBlock" class="text-danger form-text">{{ errors?.role }}</div>
+              </div>
+    
+              <div class="form-group mb-3 col-md-6">
+                <label for="inputType" class="form-label">Display on page</label>
+                <select formControlName="category" class="form-control" id="inputType">
+                  <option value="" selected [disabled]="!isAddMode">Select the page to display this FAQ on</option>
+                  <ng-container *ngIf="faqForm.controls['role'].value == 'Static Page'">
+                    <option value="home">Home</option>
+                    <option value="how-it-works">How it works</option>
+                    <option value="about">About</option>
+                    <option value="whats-new">What's new</option>
+                    <option value="pricing">Pricing</option>
+                    <option value="contact">Contact</option>
+                  </ng-container>
+                  <ng-container *ngIf="faqForm.controls['role'].value == 'Early Childhood Educator'">
+                    <option value="personal-information">Personal Information</option>
+                    <option value="education-experience">Education Experience</option>
+                    <option value="work-experience">Work Experience</option>
+                  </ng-container>
+                  <ng-container *ngIf="faqForm.controls['role'].value == 'Early Learning Centres'">
+                    <option value="profile">Profile</option>
+                    <option value="new-educator-search">New Educator Search</option>
+                    <option value="search-history">Search History</option>
+                    <option value="early-learning-centre-profile">Early Learning Centre Profile</option>
+                  </ng-container>
+                </select>
+                <div *ngIf="errors?.category" id="categoryHelpBlock" class="text-danger form-text">
+                  {{ errors?.category }}
+                </div>
+              </div>
+
+              <div class="form-group mb-3 col-md-12">
+                <label for="inputAnswer" class="form-label">Answer</label>
+                <textarea formControlName="answer" rows="4" id="inputAnswer" class="form-control" placeholder="Enter FAQ answer"></textarea>
+                <div *ngIf="errors?.answer" id="AnswerHelpBlock" class="text-danger form-text">
+                  {{ errors?.answer }}
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-4 float-end">
+              {{ isAddMode ? 'Add' : 'Update' }}
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Body -->
+
+  </div>
+</div>

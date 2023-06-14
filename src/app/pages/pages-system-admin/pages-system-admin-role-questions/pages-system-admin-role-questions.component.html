@@ -1,0 +1,76 @@
+<div class="main-content border pt-3 pb-5 px-sm-5 px-2">
+  <div class="educators-section mt-4">
+
+
+    <app-admin-search-bar 
+      title="Role" 
+      highlightText="Questions"
+      [showButton]="true"
+      buttonText="Add Profile Question"
+      (buttonClick)="onAddQuestion()"
+      (onSearch)="search($event)"
+    >
+    </app-admin-search-bar>
+
+    <!-- Body -->
+    <div class="container">
+      <div class="row">
+        <div class="border-container">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a (click)="changePageRole('Early Learning Centres')" [class.active]="pageRole == 'Early Learning Centres'" class="nav-link" href="javascript:;">
+                Early Learning Centres
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a (click)="changePageRole('Early Childhood Educator')" [class.active]="pageRole == 'Early Childhood Educator'" class="nav-link" href="javascript:;">
+                Early Childhood Educator
+              </a>
+            </li>
+          </ul>
+          <div class="table-responsive pb-4">
+
+            <div class="navbar-filters">
+              <div class="mb-3">
+                <div class="d-flex align-items-center">
+                  <div class="icon-filter">
+                    <span class="bx bx-filter"></span>&nbsp;
+                  </div>
+                  <div>
+                    <div class="filters-ece">
+                      <div class="select-category-filter">
+                        <select [(ngModel)]="category" (change)="changeCategory($event)" id="filterSelectCategory" class="form-control form-control-sm">
+                          <ng-container *ngIf="pageRole == 'Early Learning Centres'">
+                            <option value="centre-profile">Centre Profile</option>
+                            <option value="job-match">Job Match</option>
+                          </ng-container>
+                            <ng-container *ngIf="pageRole == 'Early Childhood Educator'">
+                              <option value="education-experience">Education Experience</option>
+                              <option value="personal-information">Personal Information</option>
+                              <option value="work-experience">Work Experience</option>
+                        </ng-container>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="pageRole == 'Early Learning Centres' && category == 'job-match'"
+                    class="total-percentage px-1 ms-auto">
+                    <span>{{ totalPercentage }} / 100%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <table datatable [dtOptions]="dtOptions" class="table table-hover">
+              <thead class="table-dark border-none"></thead>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- Body -->
+
+  </div>
+</div>

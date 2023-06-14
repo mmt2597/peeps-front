@@ -1,0 +1,192 @@
+<div class="main-content border pt-3 pb-5 px-sm-5 px-2">
+  <div class="work-experience-form mt-5">
+
+    <!-- Body -->
+    <div class="container">
+
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <div class="row mb-4">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col">
+                  <h3 class="text-start">{{ isAddMode ? 'Add a New' : 'Edit' }} <span class="primary-text">Early Centre</span></h3>
+                </div>
+                <div class="col">
+                  <a routerLink="/early-learning-centres/centers-profile" class="btn btn-primary float-end">Go Back</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form [formGroup]="centersProfileForm" (ngSubmit)="onSubmit()">
+            <input type="hidden" formControlName="lat" id="inputLatName">
+            <input type="hidden" formControlName="lng" id="inputLngtName">
+
+            <div class="form-wrapper row">
+              <div class="col-md-6">
+                <div class="border-container mb-5">
+                  <div class="row g-3">
+                    <h4 class="text-start my-2">Center  Details</h4>
+                    <p class="text-start my-0">Edit your basic Information such as name email etc..</p>
+                    <div class="col-md-12">
+                      <div class="border-small-container">
+                        <div class="row">
+                          <div class="col-md-2">
+                            <img [src]="avatarPreview == '' || avatarPreview == null ? defaultAvatar : avatarPreview" class="img-fluid">
+                          </div>
+                          <div class="col-md-10">
+                            <div class="d-inline-block upload-btn-wrapper">
+                              <button class="btn btn-primary">Upload new photo</button>
+                              <input #imageInput type="file" accept="image/*" (change)="onUploadImage(imageInput)" class="w-100" />
+                            </div>
+                            <div class="d-inline-block">
+                              <a 
+                                href="javascript:;" 
+                                (click)="removeAvatar()"
+                                class="btn btn btn-outline-danger ms-3"
+                              >
+                                  Remove
+                              </a>
+                            </div>
+                            <p class="mt-1 mb-0">Image formats with max size of 3mb</p>
+                            <!-- <p *ngIf="selectedFile?.status === 'ok'" class="mt-1 mb-0"> Image uploaded succesfully!</p> -->
+                            <!-- <p *ngIf="selectedFile?.status === 'fail'" class="mt-1 mb-0"> Image upload failed!</p> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputCenterName">Center Name</label>
+                      <input type="text" formControlName="center_name" class="form-control mt-2" id="inputCenterName" placeholder="Enter Center name">
+                      <div *ngIf="errors?.center_name" id="typeHelpBlock" class="text-danger form-text">
+                        {{ errors?.center_name }}
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail">Email Address</label>
+                      <input type="email" formControlName="email" class="form-control mt-2" id="inputEmail" placeholder="Enter Email Address">
+                      <div *ngIf="errors?.email" id="typeHelpBlock" class="text-danger form-text">
+                        {{ errors?.email }}
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPhoneNumber">Phone Number</label>
+                      <input type="text" formControlName="phone_number" class="form-control mt-2" id="inputPhoneNumber" placeholder="Enter Phone Number">
+                      <div *ngIf="errors?.phone_number" id="typeHelpBlock" class="text-danger form-text">
+                        {{ errors?.phone_number }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="border-container mb-5">
+                  <div class="row g-3">
+                    <h4 class="text-start my-2">Address</h4>
+                    <div class="col-12 my-0">
+                      <label for="inputAddress" class="form-label">Address</label>
+                      <input type="text" formControlName="address" ngx-google-places-autocomplete [options]='options' (onAddressChange)="AddressChange($event)" class="form-control" id="inputAddress" placeholder="Address">
+                      <div *ngIf="errors?.address" id="typeHelpBlock" class="text-danger form-text">
+                        {{ errors?.address }}
+                      </div>
+                    </div>
+                    <!-- <div class="col-12">
+                      <label for="inputAddress2" class="form-label">Address 2 (optional)</label>
+                      <input type="text" formControlName="address2" class="form-control" id="inputAddress2" placeholder="Address 2">
+                      <div *ngIf="errors?.address2" id="typeHelpBlock" class="text-danger form-text">
+                        {{ errors?.address2 }}
+                      </div>
+                    </div> -->
+                    <!-- <div class="col-12">
+                      <label for="inputSuburb" class="form-label">Suburb</label>
+                      <input type="text" formControlName="suburb" class="form-control" id="inputSuburb" placeholder="Suburb">
+                      <div *ngIf="errors?.suburb" id="typeHelpBlock" class="text-danger form-text">
+                        {{ errors?.suburb }}
+                      </div>
+                    </div> -->
+                    <div class="col-md-6">
+                      <label for="inputCity" class="form-label">Suburb</label>
+                      <input type="text" formControlName="city" class="form-control" id="inputCity" placeholder="City">
+                      <div *ngIf="errors?.city" id="typeHelpBlock" class="text-danger form-text">
+                        {{ errors?.city }}
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="inputState" class="form-label">State</label>
+                      <select id="inputState" formControlName="state" class="form-select">
+                        <option selected disabled>Select State</option>   
+                        <option value="ACT">Australian Capital Territory (ACT)</option>
+                        <option value="NSW">New South Wales (NSW)</option>
+                        <option value="NT">Northern Territory (NT)</option>
+                        <option value="QLD">Queensland (QLD)</option>
+                        <option value="SA">South Australia (SA)</option>
+                        <option value="TAS">Tasmania (TAS)</option>
+                        <option value="VIC">Victoria (VIC)</option>
+                        <option value="WA">Western Australia (WA)</option>
+                      </select>
+                      <div *ngIf="errors?.state" id="typeHelpBlock" class="text-danger form-text">
+                        {{ errors?.state }}
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <label for="inputPostCode" class="form-label">Postcode</label>
+                      <input type="text" formControlName="post_code" class="form-control" id="inputPostCode" placeholder="Code">
+                      <div *ngIf="errors?.post_code" id="typeHelpBlock" class="text-danger form-text">
+                        {{ errors?.post_code }}
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputCountry" class="form-label">Country</label>
+                      <select formControlName="country" id="inputCountry" class="form-select">
+                        <option selected disabled>Select Country</option>
+                        <option value="Australia">Australia</option>
+                        <option value="New Zealand">New Zealand</option>
+                      </select>
+                      <div *ngIf="errors?.country" id="typeHelpBlock" class="text-danger form-text">
+                        {{ errors?.country }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ---------------- DYNAMIC QUESTION -------------- -->
+              <div class="col-md-6">
+                <div *ngFor="let question of questions; let i = index" class="border-container mb-5">
+                  <div class="row g-3">
+                    <h4 class="text-start my-2">
+                      {{ question.screen_label }}
+                    </h4>
+                    <p class="my-0">{{ question?.description }}</p>
+                    <div class="form-floating">
+                      <app-form-field-type 
+                        [(options)]="questions[i]" 
+                        [attr.data-index]="i"
+                      ></app-form-field-type>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="btn-toolbar mb-5 float-end">
+              <div class="btn-group me-2">
+                <a href="javascript:;" (click)="resetForm()" class="btn btn-danger">Start Again</a>
+              </div>
+              <div class="button-group me-2">
+                <a routerLink="/early-learning-centres/centers-profile" class="btn btn-secondary">Cancel</a>
+              </div>
+              <div class="button-group me-2">
+                <button type="submit" class="btn btn-primary">Finish &amp; Save</button>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <!-- Body -->
+
+  </div>
+</div>

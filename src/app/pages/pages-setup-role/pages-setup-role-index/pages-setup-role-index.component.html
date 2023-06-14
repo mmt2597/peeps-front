@@ -1,0 +1,31 @@
+<app-header></app-header>
+
+<!-- Body -->
+
+<section id="home" class="intro-section">
+  <div class="container">
+    <div class="row g-3">
+      <div class="col-md-8 mx-auto">
+      <div class="border-container mb-5">
+          <h3 class="text-start mb-4 text-center">Select Account Type</h3>
+          <div class="form-group">
+            <select [(ngModel)]="role" class="form-control">
+              <option value="" selected disabled> Select Account Type</option>
+              <option value="Early Learning Centres">Early Learning Centres</option>
+              <option value="Early Childhood Educator">Early Childhood Educator</option>
+            </select>
+            <div *ngIf="errors?.role" id="roleHelpBlock" class="text-danger form-text">
+              {{ errors?.role }}
+            </div>
+          </div>
+          <div *ngIf="role !== ''" class="form-group mt-4">
+            <button (click)="onSaveRole()" class="btn btn-primary float-end">Save</button>
+            <div class="clearfix"></div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

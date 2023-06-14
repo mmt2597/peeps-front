@@ -1,0 +1,68 @@
+<div class="main-content border pt-3 pb-5 px-sm-5 px-2">
+  <div class="work-experience-form mt-5">
+
+    <div class="container">
+      <div class="row my-3">
+        <div class="col-md-8"></div>
+        <div class="col-md-4 text-end ">
+          <!-- <a routerLink="/early-learning-centres/search-history" class="btn btn-primary">Search History</a> &nbsp; -->
+          <!-- <a routerLink="/early-learning-centres/search-template" class="btn btn-secondary">Search Template</a> -->
+        </div>
+      </div>
+    </div>
+
+      <app-admin-search-bar
+        title="Search" 
+        highlightText="History"
+        [showButton]="false"
+        (onSearch)="search($event)"
+      ></app-admin-search-bar>
+
+      <!-- Body -->
+      <div class="container">
+        <div class="tab-content" fid="pills-tabContent">
+          <div class="row">
+            <div class="">
+              <div class="table-responsive pb-4">
+                
+                <table datatable [dtOptions]="dtOptions" class="table">
+                  <thead class="table-dark border-none"></thead>
+                  <tbody *ngIf="searchHistories?.length != 0">
+                    <tr *ngFor="let searchHistory of searchHistories; let i = index">
+                      <td>{{ searchHistory?.centers_profile?.center_name }}</td>
+                      <td>{{ searchHistory?.search_name }}</td>
+                      <td></td>
+                      <td>{{ searchHistory?.created_at | date }}</td>
+                      <td>{{ searchHistory?.last_used_at | date }}</td>
+                      <td>
+                        <a *ngIf="searchHistory?.list_available" href="javascript:;" class="btn btn-primary ">Current</a>
+                        <a *ngIf="!searchHistory?.list_available" href="javascript:;" class="btn btn btn-danger ">Expired</a>
+                      </td>
+                      <td>
+                        <div class="dropdown">
+                          <button class="btn btn-primary dropdown-toggle" type="button" [id]="searchHistory?.uuid" data-bs-toggle="dropdown" aria-expanded="false">
+                          More Actions
+                          </button>
+                          <ul class="dropdown-menu" [attr.aria-labelledby]="searchHistory?.uuid">
+                            <li><a href="javascript:;" (click)="downloadList(searchHistory?.uuid)" class="dropdown-item">Download List</a></li>
+                            <li><a href="javascript:;" (click)="editOrSearchAgain(i, searchHistory?.uuid)" class="dropdown-item">Edit or Run Search Again</a></li>
+                            <li>
+                              <a href="javascript:;" (click)="delete(searchHistory?.uuid)" class="dropdown-item">Delete Search</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="searchHistories?.length == 0"></tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Body -->
+
+  </div>
+</div>

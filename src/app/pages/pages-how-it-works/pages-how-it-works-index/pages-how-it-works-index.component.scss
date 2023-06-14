@@ -1,0 +1,27 @@
+@import '../../../../scss/custom.scss';
+
+.services {
+  margin: 10em 0;
+  position: relative;
+  .servicesbg {
+    background: url(../../../../assets/images/plusbg.png) no-repeat;
+    width: 154px;
+    height: 166px;
+    position: absolute;
+    right: 2px;
+    top: -40px;
+  }
+  .corner-border {
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 700;
+    &::after {
+      content: "";
+      background-color: $secondary;
+      width: 3px;
+      height: 60%;
+      top: 0;
+      left: -15px;
+    }
+  }
+}

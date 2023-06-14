@@ -1,0 +1,27 @@
+<div 
+  [ngClass]="isCollapse ? 'collapse' : ''"
+  class="sidebar d-flex flex-column flex-shrink-0 p-4 flex-nowrap overflow-y-auto"
+>
+  <a href="javascript:;" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none mx-auto">
+    <img src="assets/images/colored-logo.png" class="img-fluid" alt="Peeps4u Logo">
+  </a>
+  <span class="mt-5"></span>
+  <h4 class="text-start">Main Menu</h4>
+  <ul class="nav nav-pills flex-column mb-auto mt-2 pe-1">
+    <li *ngFor="let route of eceRoutes" class="nav-item">
+      <a 
+        [routerLink]="route.path" 
+        [ngClass]="hasRoute(route.path) ? 'active' : ''"
+        class="nav-link py-3"
+      >
+        <i [class]="route.icon"></i> {{ route.title }}
+        <i class="bx bx-chevron-right float-end mt-1"></i>
+      </a>
+    </li>
+  </ul>
+  
+  <div class="contact-support p-3 rounded rounded-3 mb-4 mx-auto">
+    <img src="assets/images/manage.png" alt="Manage" class="img-fluid">
+    <a routerLink="/contact" class="btn contact-us btn-primary p-0">Contact Us</a>
+  </div>
+</div>

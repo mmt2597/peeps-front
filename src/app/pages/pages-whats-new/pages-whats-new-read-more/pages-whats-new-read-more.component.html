@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+<!-- Body -->
+
+<section>
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <!-- <h4>Blog</h4> -->
+        <!-- <h2>What's <span class="primary-text">New</span></h2> -->
+      </div>
+    </div>
+    <div class="border-container">
+      <div class="row">
+        <div class="col-md-4">
+          <img [src]="article?.image_url" [alt]="article?.title">
+        </div>
+        <div class="col-md-8">
+          <h4 class="mb-4 text-start">{{ article?.title }}</h4>
+          <p [innerHtml]="article?.content"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Body -->
+
+<app-footer></app-footer>

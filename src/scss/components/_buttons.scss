@@ -1,0 +1,155 @@
+.btn {
+  height: 50px;
+  text-shadow: none;
+  line-height: 36px;
+  i {
+    line-height: 34px;
+  }
+}
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+.btn-check:checked + .btn-primary:focus,
+.btn-check:active + .btn-primary:focus,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: none;
+}
+input,
+select {
+  height: 50px;
+}
+
+.btn-check:checked + .btn-primary,
+.btn-check:active + .btn-primary,
+.btn-primary:active,
+.btn-primary.active,
+.show > .btn-primary.dropdown-toggle {
+  color: #000;
+  background-color: #1d4b50;
+  border-color: #1d4b50;
+}
+
+.btn-lg {
+  min-width: 180px;
+  height: 64px;
+  border-width: 2px;
+  border-style: solid;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+.btn-primary {
+  color: $white !important;
+
+  &:hover,
+  &:focus {
+    color: $white;
+  }
+}
+.btn-secondary {
+  color: $white;
+  background-color: #737373;
+  &:hover {
+    color: $white;
+  }
+}
+.btn-lightpink {
+  color: $darkpink;
+  background-color: $lightpink;
+  &:hover {
+    color: $darkpink;
+    background-color: $lightpink;
+  }
+}
+.btn-darkpink {
+  color: $darkpink;
+  background-color: $darkpink;
+  &:hover {
+    color: $darkpink;
+    background-color: $darkpink;
+  }
+}
+.btn-danger {
+  color: $white !important;
+
+  &:hover,
+  &:focus {
+    color: $white;
+  }
+}
+.btn-social {
+  color: $text-dark;
+  background-color: $white;
+  border: 1px solid $gray;
+  &:hover {
+    color: $text-dark;
+    background-color: $white;
+    border: 1px solid $gray;
+  }
+  .icons {
+    margin-right: 10px;
+  }
+}
+.peeps-btn-toggle {
+  .btn {
+    border: 2px solid $primary;
+  }
+}
+.tabs-button-primary,
+.tabs-button-primary:hover {
+  border-radius: 35px !important;
+  background-color: $primary !important;
+  color: $white !important;
+  position: relative;
+  border: 1px solid $dark-green;
+  .selected-icon {
+    background-color: $darkpink;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -8px;
+    right: 8px;
+    display: block;
+    border-radius: 10px;
+    color: $white;
+    i {
+      position: relative;
+      top: -7px;
+    }
+  }
+}
+.tabs-button-lightpink,
+.tabs-button-lightpink:active {
+  border-radius: 35px !important;
+  border: 1px solid $darkpink !important;
+  background-color: $lightpink !important;
+  color: $darkpink !important;
+  position: relative;
+  .selected-icon {
+    background-color: $primary;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -8px;
+    right: 8px;
+    display: block;
+    border-radius: 10px;
+    color: $white;
+    i {
+      position: relative;
+      top: -7px;
+    }
+  }
+}
+.educator-search {
+  background: url(../../assets/images/icons/educatorsearch.png) no-repeat;
+  width: 50px;
+  display: inline-block;
+  height: 50px;
+}

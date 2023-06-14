@@ -1,0 +1,90 @@
+<app-header></app-header>
+
+<!-- Body -->
+<section  class="login-section">
+  <div class="round-bg-circle1"></div>
+  <div class="round-bg-circle2"></div>
+  <div class="round-bg-circle3"></div>
+  <div class="round-bg-circle4"></div>
+  <div class="container">
+    <div class="row border-container my-3 ">
+      <div class="col-md-7 d-flex align-items-center justify-content-center mt-6">
+        <img class="img-fluid" src="assets/images/headerimage.png" alt=""/>
+      </div>
+      <div class="col-md-5 ">
+        <h4 class="text-start"><img class="mr-3"src="assets/images/icons/login.png"/><span class="ms-3">Get Started</span></h4>
+        <p>Already a member? <a routerLink="/login">Login</a></p>
+
+        <p>Please tell us, are you an Early Childhood Educator or an Early Learning Centre</p>
+
+        <form [formGroup]="registerForm" [class.greyed-out]="registerForm.value.role == ''" (ngSubmit)="onSubmit()">
+
+          <div class="form-group mb-4">
+            <label for="accountType">Please select your account type, before proceeding</label>
+            <select formControlName="role" class="form-select mt-2" id="accountType">
+              <option value="" selected disabled>Select Account Type</option>
+              <option value="Early Learning Centres">Early Learning Centres</option>
+              <option value="Early Childhood Educator">Early Childhood Educator</option>
+            </select>
+            <div *ngIf="errors?.role" id="roleHelpBlock" class="text-danger form-text" [innerHtml]="errors?.role | formatErrorMessage"></div>
+          </div>
+
+          <p>You can have fast access to your account using your Google account.</p>
+
+          <!-- Login As -->
+          <div class="form-group">
+            <button (click)="socialLogin('google')" class="btn btn-google btn-social btn-block  mb-4" type="button">
+              <span>
+                <img class="icons" src="assets/images/icons/googlelogo.png"/>I would like to use Google
+              </span>
+            </button>
+            <button (click)="socialLogin('facebook')" class="btn btn-facebook btn-social btn-block mb-4" type="button">
+              <span>
+                <img class="icons"src="assets/images/icons/facebooklogo.png"/>I would like to use Facebook 
+              </span>
+            </button>
+          </div>
+          <div class="clearfix"></div>
+          <p>If you select Google we will create your account straight away.</p>
+
+          <div class="text-center my-4 hr-border"><span class="circle"> OR</span>  </div>
+
+          <p>Or if you would prefer you can use a dedicated user name and password</p>
+
+          <!-- Forms -->
+          <div class="form-group mb-4">
+            <label for="email">Email address</label>
+            <input type="email" formControlName="email" class="form-control mt-2" id="email" placeholder="Enter email">
+            <div *ngIf="errors?.email" id="emailHelpBlock" class="text-danger form-text" [innerHtml]="errors?.email | formatErrorMessage"></div>
+          </div>
+          <div class="form-group mb-4">
+            <label for="reEmail">Re-Email address</label>
+            <input type="email" formControlName="email_confirmation" class="form-control mt-2" id="reEmail" placeholder="Enter email">
+            <div *ngIf="errors?.email_confirmation" id="email_confirmationHelpBlock" class="text-danger form-text" [innerHtml]="errors?.email_confirmation | formatErrorMessage"></div>
+          </div>
+          <div class="form-group mb-4">
+            <label for="password">Password</label>
+            <br>
+            <input type="password" formControlName="password" class="form-control mt-2" id="password" placeholder="6+ Characters, At least 1 Capital & 1 Lowercase Letter">
+            <div *ngIf="errors?.password" id="passwordHelpBlock" class="text-danger form-text" [innerHtml]="errors?.password | formatErrorMessage"></div>
+          </div>
+          <div class="form-group mb-4">
+            <label for="rePassword">Re-Password</label>
+            <input type="password" formControlName="password_confirmation" class="form-control mt-2" id="rePassword" placeholder="6+ Characters, At least 1 Capital & Lowercase Letter">
+            <div *ngIf="errors?.password_confirmation" id="password_confirmationHelpBlock" class="text-danger form-text" [innerHtml]="errors?.password_confirmation | formatErrorMessage"></div>
+          </div>
+          <div class="d-grid mb-4">
+            <button type="submit" class="btn btn-primary btn-block">
+              Create Account Using User Name and Password
+            </button>
+          </div>
+        </form>
+
+        <p>If you select User Name and Password we will send you an email to confirm your account details</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Body -->
+
+<app-footer></app-footer>

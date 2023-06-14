@@ -1,0 +1,9 @@
+<div class="d-flex flex-nowrap">
+  <app-admin-sidebar style="background-color: #e1e1e1;"></app-admin-sidebar>
+  <div class="main w-100 px-3 px-md-5 mb-md-5 mb-3">
+    <div class="main-overlay" (click)="collapse()"></div>
+    <app-admin-menu></app-admin-menu>
+    <app-admin-jumbotron></app-admin-jumbotron> 
+    <router-outlet></router-outlet>
+  </div>
+</div>

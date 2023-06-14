@@ -1,0 +1,70 @@
+<div class="main-content border pt-3 pb-5 px-sm-5 px-2">
+  <div class="billing-section mt-5">
+
+    <!-- Body -->
+    <div class="container">
+
+      <div class="divider my-1"></div>
+      <!-- <h3 class="text-start">Billing <span class="primary-text">Information</span></h3> -->
+      <div class="billing-wrapper">
+        <div class="row billing-items">
+            <div class="col-lg-6 col-md-12 col-sm-12 my-3 billing-item">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill">
+                                <h6 class="mt-0 text-start">Account Information</h6>
+                                <p class="mb-0">Manage your payment account here.</p>
+                            </div>
+                            <button type="button" class="btn btn-primary" (click)="openSection('ACCOUNT_DETAILS')">Manage</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 my-3 billing-item">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill">
+                                <h6 class="mt-0 text-start">Address</h6>
+                                <p class="mb-0">Keep your billing address up to date here.</p>
+                            </div>
+                            <button type="button" class="btn btn-primary" (click)="openSection('ADDRESS')">Manage</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 my-3 billing-item">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill">
+                                <h6 class="mt-0 text-start">Credit Card</h6>
+                                <p class="mb-0">Manage your preferred payment method here.</p>
+                            </div>
+                            <button type="button" class="btn btn-primary" (click)="openSection('PAYMENT_SOURCES')">Manage</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 my-3 billing-item">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill">
+                                <h6 class="mt-0 text-start">Billing History</h6>
+                                <p class="mb-0">View your billing records.</p>
+                            </div>
+                            <button type="button" class="btn btn-primary" (click)="openSection('BILLING_HISTORY')">Manage</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Body -->
+
+  </div>
+</div>

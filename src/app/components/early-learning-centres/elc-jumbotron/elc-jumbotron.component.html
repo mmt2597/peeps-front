@@ -1,0 +1,36 @@
+<div class="jumbotron d-flex gap-5 align-items-center bg-primary px-3 px-md-5 py-4 rounded-lg rounded-top" style="position: relative;">
+
+  <div class="d-none d-md-block">
+    <div class="rounded-circle border bg-white" style="width: 101px; height: 101px; overflow: hidden; border: 5px solid #FFFF !important;">
+      <img [src]="user?.avatar_url ?? 'assets/images/icons/head-icon.png'" class="img-fluid d-block mx-auto" alt="Profile Image">
+    </div>
+  </div>
+  
+  <div>
+    <ng-container *ngIf="this.eceRoutes[this.router.url] == undefined">
+      <span class="text-white">Hi {{ (user?.first_name || '') }}</span>
+      <h3 class="text-white mb-0">Welcome Back</h3>
+    </ng-container>
+    <ng-container *ngIf="this.eceRoutes[this.router.url] !== undefined">
+      <h3 class="text-white fw-normal mb-0">{{ this.eceRoutes[this.router.url].title }}</h3>
+    </ng-container>
+
+  </div>
+
+  <!-- <div class="ms-auto" style="z-index: 1;">
+    <button class="btn btn-primary text-white border">
+    <i class="bx bx-edit bx-sm lh-1"></i> Edit 
+    {{ this.eceRoutes[this.router.url] !== undefined ? this.eceRoutes[this.router.url].shorten_title : "Dashboard" }} 
+    </button>
+  </div> -->
+
+  <div>
+    <img 
+      src="assets/images/personal-info.png" 
+      class="d-none d-xxl-block" 
+      alt="Personal Info" 
+      style="height: 187px; position: absolute; top: 50%; right: 40%; transform: translate(calc(100%), -50%);"
+    />
+  </div>
+
+</div>

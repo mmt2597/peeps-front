@@ -1,0 +1,121 @@
+<div class="main-content border pt-3 pb-5 px-sm-5 px-2">
+  <div class="educators-section mt-4">
+
+    <!-- Body -->
+    <div class="container">
+
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <h3 class="text-start">{{ isAddMode ? 'Add' : 'Edit' }} Profile <span class="primary-text"> Question</span></h3>
+        </div>
+        <div class="col">
+          <a routerLink="/system-admin/role-questions" class="btn btn-primary float-end">Go Back</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="border-container">
+          <form [formGroup]="roleQuestionForm" (ngSubmit)="onSubmit()">
+          
+            <div class="row">
+              <div class="form-group mb-3 col-md-12">
+                <label for="inputType" class="form-label">Profile Type</label>
+                <select formControlName="role" class="form-control" id="inputType">
+                  <option value="" selected disabled>Please Select Profile Type</option>
+                  <option value="Early Learning Centres">Early Learning Centres</option>
+                  <option value="Early Childhood Educator">Early Childhood Educator</option>
+                </select>
+                <div *ngIf="errors?.role" id="roleHelpBlock" class="text-danger form-text">
+                  {{ errors?.role }}
+                </div>
+              </div>
+
+              <ng-container *ngIf="roleQuestionForm.value.role">
+                <div class="form-group mb-3 col-md-12">
+                  <label for="inputType" class="form-label">Category</label>
+                  <select 
+                    *ngIf="roleQuestionForm.controls['role'].value == 'Early Childhood Educator'" 
+                    formControlName="category" 
+                    class="form-control" 
+                    id="inputType"
+                  >
+                    <option value="" selected disabled>Select Category</option>
+                    <option value="personal-information">Personal Information</option>
+                    <option value="education-experience">Education Experience</option>
+                    <option value="work-experience">Work Experience</option>
+                  </select>
+                  <select 
+                    *ngIf="roleQuestionForm.controls['role'].value == 'Early Learning Centres'" 
+                    formControlName="category" 
+                    class="form-control" 
+                    id="inputType"
+                  >
+                    <option value="" selected disabled>Select Category</option>
+                    <option value="job-match">Job Match</option>
+                    <option value="centre-profile">Centre Profile</option>
+                  </select>
+
+                  <div *ngIf="errors?.category" id="categoryHelpBlock" class="text-danger form-text">
+                    {{ errors?.category }}
+                  </div>
+                </div>
+                <div class="form-group mb-3 col-md-12">
+                  <label for="inputType" class="form-label">Question</label>
+                  <select formControlName="question_uuid" class="form-control" id="inputType">
+                    <option value="" selected disabled>Select Question</option>
+                    <option *ngFor="let question of questions" value="{{ question.uuid }}">{{ question.title }}</option>
+                  </select>
+                  <div *ngIf="errors?.question_uuid" id="questionUuidHelpBlock" class="text-danger form-text">
+                    {{ errors?.question_uuid }}
+                  </div>
+                </div>
+                <div class="form-group mb-3 col-md-12">
+                  <label for="inputScreenLabel">Screen Label</label>
+                  <input formControlName="screen_label" type="text" id="inputScreenLabel" class="form-control" placeholder="Add text to override the question title">
+                  <div *ngIf="errors?.screen_label" id="screenLabelHelpBlock" class="text-danger form-text">
+                    {{ errors?.screen_label }}
+                  </div>
+                </div>
+                <div class="form-group mb-3 col-md-12">
+                  <label for="inputDescription">Description</label>
+                  <textarea formControlName="description" id="inputDescription" class="form-control" placeholder="Enter a short description to display with the question?"></textarea>
+                  <div *ngIf="errors?.description" id="descriptionHelpBlock" class="text-danger form-text">
+                    {{ errors?.description }}
+                  </div>
+                </div>
+                <div class="form-group mb-3 col-md-12">
+                  <label for="inputPlaceholder">Placeholder <small>(Place holder text is not used in Radio or Checkbox questions)</small></label>
+                  <input formControlName="placeholder" type="text" id="inputPlaceholder" class="form-control" placeholder="Enter short place holder text">
+                  <div *ngIf="errors?.placeholder" id="PlaceholderHelpBlock" class="text-danger form-text">
+                    {{ errors?.placeholder }}
+                  </div>
+                </div>
+                <div class="form-group mb-3 col-md-12">
+                  <label for="inputDefaultValue">Default Value</label>
+                  <input formControlName="default_value" type="text" id="inputDefaultValue" class="form-control" placeholder="Enter Default Value">
+                  <div *ngIf="errors?.default_value" id="DefaultValueHelpBlock" class="text-danger form-text">
+                    {{ errors?.default_value }}
+                  </div>
+                </div>
+                <div class="form-group mb-3 col-md-12">
+                  <label for="inputClassWrapper">CSS Class Container</label>
+                  <input formControlName="class_wrapper" type="text" id="inputClassWrapper" class="form-control" placeholder="Enter CSS class container">
+                  <div *ngIf="errors?.class_wrapper" id="ClassWrapperHelpBlock" class="text-danger form-text">
+                    {{ errors?.class_wrapper }}
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-4 float-end">
+              {{ isAddMode ? 'Add' : 'Update' }}
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Body -->
+
+  </div>
+</div>

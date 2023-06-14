@@ -1,0 +1,153 @@
+<div class="main-content border pt-3 pb-5 px-sm-5 px-2">
+  <div class="educator-search-section mt-5">
+
+    <!-- Body -->
+    <div class="container">
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <h3 class="text-start">Find Your <span class="primary-text">Educator</span></h3>
+            </div>
+            <div *ngIf="searchComplete" class="col-md-6">
+              <button  class="btn btn-primary col-12" (click)="search()">Save Search and Job Match Candidates Now</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xxl-6">
+              <div class="border-container mb-5">
+                <div class="row g-3">
+                  <h4 class="text-start primary-text mt-2">Educator Search</h4>
+                  <div class="form-group my-0">
+                    <label for="selectCenterName" class="form-label">Choose Centre</label>
+                    <select [(ngModel)]="form.centers_profile_uuid" id="selectCenterName" class="form-select">
+                      <option value="" selected disabled>Select Centre</option>
+                      <option *ngFor="let centre of centres" value="{{ centre?.uuid }}" [innerHtml]="centre?.center_name"></option>
+                    </select>
+                    <div *ngIf="errors?.centers_profile_uuid" id="centersProfileHelpBlock" class="text-danger form-text">
+                      {{ errors?.centers_profile_uuid }}
+                    </div>
+                  </div>
+                  <div class="form-group my-2">
+                    <label for="inputState" class="form-label">Enter Your Search Name?</label>
+                    <input [(ngModel)]="form.search_name" type="text" class="form-control mt-2" id="inputSearchName" placeholder="Enter Search Name">
+                    <div *ngIf="errors?.search_name" id="searchNameHelpBlock" class="text-danger form-text">
+                      {{ errors?.search_name }}
+                    </div>
+                  </div>
+
+                  <!-- Load Dynamic Questoins -->
+                  <div *ngFor="let question of questions; let i = index">
+                    <h4 class="text-start my-2">
+                    {{ question.screen_label }}
+                    </h4>
+                    <p class="my-0">{{ question?.description }}</p>
+                    <app-form-field-type [(options)]="questions[i]" [attr.data-index]="i"></app-form-field-type>
+                  </div>
+
+                  <!-- <div class="col-md-12">
+                    <div class="col-md-6 p-0">
+                      <label class="form-label">Save this Search as Template</label>
+                      <div class="btn-group btn-toggle peeps-btn-toggle">
+                        <button class="btn btn-primary" [class.active]="form.save_template" (click)="form.save_template = true">Yes</button>
+                        <button class="btn btn-secondary" [class.active]="!form.save_template" (click)="form.save_template = false">No</button>
+                      </div>
+                      <div *ngIf="errors?.save_template" id="saveTemplateHelpBlock" class="text-danger form-text">
+                        {{ errors?.save_template }}
+                      </div>
+                    </div>
+                  </div> -->
+
+                  <div class="form-group mb-2">
+                    <a href="javascript:;" (click)="search()" class="btn btn-primary col-12">Save Search for Job Match Later</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-6">
+              <div class="border-container mb-5">
+                <h4 class="my-0">Search Results for PEEPS4U Registered Educators </h4>
+                <div *ngIf="searchComplete">
+                  <p class="text-center my-4"><img class="img-fluid" src="assets/images/icons/thumb.png"></p>
+                  <h4 class="dark-pinktext">Congratulations we have found following Educators</h4>
+                </div>
+                <div class="table-container mt-4">
+                  <div class="row table-heading-primary g-0">
+                    <div class="col-md-6">Name</div>
+                    <div class="col-md-6">Match</div>
+                  </div>
+                  <!-- <div class="row table-content g-0">
+                    <div class="col-md-6">Adele</div>
+                    <div class="col-md-6">100%</div>
+                  </div> -->
+
+                  <div *ngFor="let candidate of candidates"  class="row table-content g-0">
+                    <div class="col-md-6">{{ candidate?.first_name }}</div>
+                    <div class="col-md-6">{{ roundTo(candidate?.total_percentage, 2) }}%</div>
+                  </div>
+
+
+                  <!-- <div class="row table-content border-none g-0">
+                    <div class="col-md-6">Katherine</div>
+                    <div class="col-md-6">98.2%</div>
+                  </div> -->
+                </div>
+                <button 
+                  *ngIf="!searchHistory?.is_purchased && searchHistory"
+                  (click)="buyList()" 
+                  type="submit" 
+                  class="btn btn-primary my-4 col-md-12"
+                >
+                  Buy this list
+                </button>
+                <button
+                  *ngIf="searchHistory?.is_purchased"
+                  (click)="ngxSmartModalService.getModal('myModal').open()"
+                  class="btn btn-secondary my-4 col-md-12 "
+                >
+                  Download Early Childhood Educator List
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ngx-smart-modal #myModal identifier="myModal">
+      <div class="table-container mt-4">
+        <div class="row table-heading-primary g-0">
+          <div class="col-md-12 text-center">Please confirm your download details</div>
+        </div>
+        <div class="row table-content g-0">
+          <label for="inputEmail" class="col-sm-3 col-form-label">Email Address</label>
+          <div class="col-sm-9">
+            <input type="email" class="form-control" [value]="authService.currentUserValue.email" id="inputEmail">
+          </div>
+        </div>
+        <div class="row table-heading-primary g-0">
+          <div class="col-md-12 text-center">Preferred Format</div>
+        </div>
+        <div class="row table-content g-0">
+          <div class="col-md-12">
+            <div class="form-check">
+              <input type="checkbox" (change)="onChangePerferredFormat($event)" value="pdf" class="form-check-input" checked id="pdfFormat">
+              <label class="form-check-label" for="pdfFormat">PDF</label>
+            </div>
+            <!-- <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked>
+              <label class="form-check-label" for="flexCheckCheckedDisabled">
+                HTML Email
+              </label>
+            </div> -->
+
+            <button (click)="sendList()" class="btn btn-primary mt-3 mx-auto">Send Now</button>
+            <p class="mt-5">Don't forget you can download any purchased list for the next 7 days from your Dashboard panel.</p>
+          </div>
+        </div>
+      </div>
+    </ngx-smart-modal>
+    <!-- Body -->
+
+  </div>
+</div>

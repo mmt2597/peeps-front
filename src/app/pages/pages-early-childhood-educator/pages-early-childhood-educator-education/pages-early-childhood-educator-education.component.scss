@@ -1,0 +1,25 @@
+// .box-wrapper {
+//   column-count: 2;
+//   width: 100%;
+//   column-fill: balance;
+// }
+
+// .box-wrapper .box-content:first-child {
+//   margin-top: 0;
+// }
+
+// .box-wrapper .box-content {
+//   margin-top: 20px;
+// }
+
+// .box-content {
+//   break-inside: avoid;
+//   -webkit-column-break-inside: avoid; 
+//   width: 100%;
+// }
+
+.divider {
+  width: 65px; 
+  background: #4BA2AC; 
+  border: 2px solid #4BA2AC;
+}

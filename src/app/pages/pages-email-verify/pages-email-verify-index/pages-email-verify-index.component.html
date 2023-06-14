@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<!-- Body -->
+
+<section  class="login-section">
+  <div class="round-bg-circle1"></div>
+  <div class="round-bg-circle2"></div>
+  <div class="round-bg-circle3"></div>
+  <div class="round-bg-circle4"></div>
+  <div class="container">
+    <div class="row border-container my-3 ">
+      <h3>Resend Email Verification Link</h3>
+      <div class="col-md-6 mx-auto">
+        <input [(ngModel)]="form.email" type="text" class="form-control" placeholder="Enter email address">
+        <div *ngIf="errors?.email" id="emailHelpBlock" class="text-danger form-text">
+          {{ errors?.email }}
+        </div>
+
+        <button (click)="send()" class="btn btn-block w-100 btn-primary mt-3">
+          {{ buttonStatus == null ? 'Send' : 'Sending...' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Body -->
+
+<app-footer></app-footer>
